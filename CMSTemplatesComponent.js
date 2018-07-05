@@ -15,41 +15,9 @@ class CmsTemplatesComponent extends React.Component {
     id: ""
   };
 
-  componentDidMount() {
-    // if (this.props.match.params.id) {
-    //   const myPromise = cmsTemplates_getById(this.props.match.params.id);
-    //   myPromise.then(resp => {
-    //     this.setState({
-    //       templateHtml: resp.data.item.templateHtml,
-    //       name: resp.data.item.name,
-    //       id: this.props.match.params.id
-    //     });
-    //   });
-    // }
-  }
-
   handleClick = e => {
     e.preventDefault();
     this.setState({ loading: true });
-    // if (this.props.match.params.id) {
-    //   cmsTemplates_update({
-    //     templateHtml: this.state.templateHtml,
-    //     name: this.state.name,
-    //     id: this.props.match.params.id
-    //   })
-    //     .then(response => {
-    //       this.setState({
-    //         templateHtml: "",
-    //         name: ""
-    //       });
-    //       this.props.history.push("/cmstemplate");
-    //       console.log("Success!" + response);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    //   this.setState({ loading: false });
-    // } else {
     cmsTemplates_create({
       templateHtml: this.state.templateHtml,
       name: this.state.name
@@ -57,16 +25,12 @@ class CmsTemplatesComponent extends React.Component {
       .then(
         response => {
           this.props.submitHandler();
-          // this.props.history.push("/admin/cms/createpage");
-          console.log("Success!" + response);
         }
-        // () => this.props.submitHandler
       )
       .catch(error => {
         console.log(error);
       });
     this.setState({ loading: false });
-    // }
   };
 
   render() {
